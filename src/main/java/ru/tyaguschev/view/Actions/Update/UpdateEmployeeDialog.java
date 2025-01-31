@@ -34,6 +34,7 @@ public class UpdateEmployeeDialog extends ActionDialog {
         this.rowData = rowData;
         initializeUI();
         addButtons("Update");
+        setVisible(true);
     }
 
     protected void initializeUI() {

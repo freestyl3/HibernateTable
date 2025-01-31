@@ -83,14 +83,12 @@ public class PositionService implements DatabaseService{
 
     @Override
     public void openInsertDialog() {
-        InsertPositionDialog insertDialog = new InsertPositionDialog(tableModel);
-        insertDialog.setVisible(true);
+        new InsertPositionDialog(tableModel);
     }
 
     @Override
     public void openUpdateDialog(Object[] rowData) {
-        UpdatePositionDialog updateDialog = new UpdatePositionDialog(tableModel, rowData);
-        updateDialog.setVisible(true);
+        new UpdatePositionDialog(tableModel, rowData);
     }
 
     @Override

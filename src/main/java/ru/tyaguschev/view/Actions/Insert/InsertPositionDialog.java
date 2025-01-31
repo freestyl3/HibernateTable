@@ -20,6 +20,7 @@ public class InsertPositionDialog extends ActionDialog {
         this.tableModel = tableModel;
         initializeUI();
         addButtons("Insert");
+        setVisible(true);
     }
 
     protected void initializeUI() {

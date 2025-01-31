@@ -16,7 +16,7 @@ import java.util.List;
 public class InsertEmployeeDialog extends ActionDialog {
     private final EmployeeService employeeService = new EmployeeService();
     private final PositionService positionService = new PositionService();
-    private final List<Integer> positionIds = positionService.findAllIds();
+    public List<Integer> positionIds = positionService.findAllIds();
     private final DefaultTableModel tableModel;
 
     private JTextField firstnameField;
@@ -27,8 +27,15 @@ public class InsertEmployeeDialog extends ActionDialog {
     public InsertEmployeeDialog(DefaultTableModel tableModel) {
         super(400, 250, "Insert Employee");
         this.tableModel = tableModel;
+        if (positionIds.isEmpty()) {
+            JOptionPane.showMessageDialog(getParent(), "No positions! Add position before adding employee!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        System.out.println("I'm here!");
         initializeUI();
         addButtons("Insert");
+
+        setVisible(true);
     }
 
     protected void initializeUI() {
@@ -64,6 +71,17 @@ public class InsertEmployeeDialog extends ActionDialog {
 
     @Override
     protected void okAction() {
+        if (firstnameField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(getParent(), "Firstname must be not empty!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (lastnameField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(getParent(), "Lastname must be not empty!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (datePicker.getDate() == null) {
+            datePicker.setDateToToday();
+        }
         Employee employee = new Employee(
                 firstnameField.getText(),
                 lastnameField.getText(),

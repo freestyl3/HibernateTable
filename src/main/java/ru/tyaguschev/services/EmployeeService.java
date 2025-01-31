@@ -81,14 +81,12 @@ public class EmployeeService implements DatabaseService{
 
     @Override
     public void openInsertDialog() {
-        InsertEmployeeDialog insertDialog = new InsertEmployeeDialog(tableModel);
-        insertDialog.setVisible(true);
+        new InsertEmployeeDialog(tableModel);
     }
 
     @Override
     public void openUpdateDialog(Object[] rowData) {
-        UpdateEmployeeDialog updateDialog = new UpdateEmployeeDialog(tableModel, rowData);
-        updateDialog.setVisible(true);
+        new UpdateEmployeeDialog(tableModel, rowData);
     }
 
     @Override
