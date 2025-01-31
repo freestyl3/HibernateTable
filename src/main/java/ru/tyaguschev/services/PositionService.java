@@ -16,6 +16,7 @@ public class PositionService implements DatabaseService{
 
     public PositionService() {}
 
+    @Override
     public Position findById(int id) {
         return positionsDAO.findById(id);
     }
@@ -48,6 +49,7 @@ public class PositionService implements DatabaseService{
         return tableModel;
     }
 
+    @Override
     public void setTableModel(DefaultTableModel tableModel) {
         this.tableModel = tableModel;
         updateTable();
@@ -71,7 +73,7 @@ public class PositionService implements DatabaseService{
         }
     }
 
-    public Object[] getRowData(Position position) {
+    private Object[] getRowData(Position position) {
         return (new Object[]{
                 position.getId(),
                 position.getPositionName(),
@@ -94,11 +96,6 @@ public class PositionService implements DatabaseService{
     @Override
     public List<Position> findAll() {
         return positionsDAO.findAll();
-    }
-
-    @Override
-    public List<String> getColumns() {
-        return positionsDAO.getColumns();
     }
 
     public Employee findEmployeeById(int id) {

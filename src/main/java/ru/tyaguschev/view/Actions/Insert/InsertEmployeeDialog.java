@@ -32,16 +32,11 @@ public class InsertEmployeeDialog extends ActionDialog {
     }
 
     protected void initializeUI() {
-
         JLabel firstnameLabel = new JLabel("Firstname:");
         JLabel lastnameLabel = new JLabel("Lastname:");
         JLabel birthdayLabel = new JLabel("Birthday:");
         JLabel positionIdLabel = new JLabel("Position ID:");
 
-         /**/
-
-//        JTextField idField = new JTextField(20); /* вставить id */
-//        idField.setEditable(false);
         firstnameField = new JTextField(20);
         lastnameField = new JTextField(20);
         positionIdCombo = new JComboBox<>();
@@ -52,7 +47,6 @@ public class InsertEmployeeDialog extends ActionDialog {
         datePicker.setTextFieldToValidStateIfNeeded();
         datePicker.setDateToToday();
 
-        // Панель для полей ввода
         JPanel inputPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
@@ -62,9 +56,8 @@ public class InsertEmployeeDialog extends ActionDialog {
         addRow(inputPanel, gbc, row++, firstnameLabel, firstnameField);
         addRow(inputPanel, gbc, row++, lastnameLabel, lastnameField);
         addRow(inputPanel, gbc, row++, birthdayLabel, datePicker);
-        addRow(inputPanel, gbc, row++, positionIdLabel, positionIdCombo);
+        addRow(inputPanel, gbc, row, positionIdLabel, positionIdCombo);
 
-        // Настройка основного контейнера
         setLayout(new BorderLayout(10, 10));
         add(inputPanel, BorderLayout.CENTER);
     }

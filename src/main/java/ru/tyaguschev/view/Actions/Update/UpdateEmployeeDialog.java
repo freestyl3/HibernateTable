@@ -15,18 +15,18 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class UpdateEmployeeDialog extends ActionDialog {
-    EmployeeService employeeService = new EmployeeService();
-    PositionService positionService = new PositionService();
-    List<Integer> positionIds = positionService.findAllIds();
+    private final EmployeeService employeeService = new EmployeeService();
+    private final PositionService positionService = new PositionService();
+    private final List<Integer> positionIds = positionService.findAllIds();
     private final DefaultTableModel tableModel;
 
-    JTextField idField = new JTextField(20);
-    JTextField firstnameField;
-    JTextField lastnameField;
-    JComboBox<String> positionIdCombo;
-    DatePicker datePicker;
+    private final JTextField idField = new JTextField(20);
+    private JTextField firstnameField;
+    private JTextField lastnameField;
+    private JComboBox<String> positionIdCombo;
+    private DatePicker datePicker;
 
-    Object[] rowData;
+    private final Object[] rowData;
 
     public UpdateEmployeeDialog(DefaultTableModel tableModel, Object[] rowData) {
         super(400, 300, "Update Employee");
@@ -75,7 +75,7 @@ public class UpdateEmployeeDialog extends ActionDialog {
         addRow(inputPanel, gbc, row++, firstnameLabel, firstnameField);
         addRow(inputPanel, gbc, row++, lastnameLabel, lastnameField);
         addRow(inputPanel, gbc, row++, birthdayLabel, datePicker);
-        addRow(inputPanel, gbc, row++, positionIdLabel, positionIdCombo);
+        addRow(inputPanel, gbc, row, positionIdLabel, positionIdCombo);
 
         // Настройка основного контейнера
         setLayout(new BorderLayout(10, 10));

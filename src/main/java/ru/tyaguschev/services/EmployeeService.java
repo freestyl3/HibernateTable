@@ -14,6 +14,7 @@ public class EmployeeService implements DatabaseService{
     private final EmployeeDAO employeeDAO = new EmployeeDAO();
     private DefaultTableModel tableModel = new DefaultTableModel();
 
+    @Override
     public Employee findById(int id) {
         return employeeDAO.findById(id);
     }
@@ -42,6 +43,7 @@ public class EmployeeService implements DatabaseService{
         return tableModel;
     }
 
+    @Override
     public void setTableModel(DefaultTableModel tableModel) {
         this.tableModel = tableModel;
         updateTable();
@@ -67,7 +69,7 @@ public class EmployeeService implements DatabaseService{
         }
     }
 
-    public Object[] getRowData(Employee employee) {
+    private Object[] getRowData(Employee employee) {
         return (new Object[]{
                 employee.getId(),
                 employee.getFirstname(),
@@ -94,8 +96,4 @@ public class EmployeeService implements DatabaseService{
         return employeeDAO.findAll();
     }
 
-    @Override
-    public List<String> getColumns() {
-        return employeeDAO.getColumns();
-    }
 }

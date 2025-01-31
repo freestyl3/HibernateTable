@@ -9,14 +9,14 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class UpdatePositionDialog extends ActionDialog {
-    PositionService positionService = new PositionService();
+    private final PositionService positionService = new PositionService();
     private final DefaultTableModel tableModel;
 
-    JTextField idField = new JTextField(20);
-    JTextField positionNameField;
-    JTextField positionCostField;
+    private final JTextField idField = new JTextField(20);
+    private JTextField positionNameField;
+    private JTextField positionCostField;
 
-    Object[] rowData;
+    private final Object[] rowData;
 
     public UpdatePositionDialog(DefaultTableModel tableModel, Object[] rowData) {
         super(400, 200, "Update Position");
