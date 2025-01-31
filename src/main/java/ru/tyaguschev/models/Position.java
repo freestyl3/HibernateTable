@@ -38,7 +38,6 @@ public class Position implements Model {
         employees.remove(employee);
     }
 
-    @Override
     public void setId(int id) {
         this.id = id;
     }
