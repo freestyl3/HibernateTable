@@ -51,7 +51,7 @@ public class UpdatePositionDialog extends ActionDialog {
         int row = 0;
         addRow(inputPanel, gbc, row++, idLabel, idField);
         addRow(inputPanel, gbc, row++, positionNameLabel, positionNameField);
-        addRow(inputPanel, gbc, row++, positionCostLabel, positionCostField);
+        addRow(inputPanel, gbc, row, positionCostLabel, positionCostField);
 
         // Настройка основного контейнера
         setLayout(new BorderLayout(10, 10));
@@ -60,9 +60,23 @@ public class UpdatePositionDialog extends ActionDialog {
 
     @Override
     protected void okAction() {
+        if (positionNameField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(getParent(), "Position name must be not empty!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        int cost;
+        try {
+            cost = Math.abs(Integer.parseInt(positionCostField.getText()));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(getParent(), "Position cost must be integer!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (positionCostField.getText().isEmpty()) {
+            positionCostField.setText("0");
+        }
         Position position = positionService.findById(Integer.parseInt(idField.getText()));
         position.setPositionName(positionNameField.getText());
-        position.setCost(Integer.parseInt(positionCostField.getText()));
+        position.setCost(cost);
 
         positionService.update(position);
         positionService.updateTable();

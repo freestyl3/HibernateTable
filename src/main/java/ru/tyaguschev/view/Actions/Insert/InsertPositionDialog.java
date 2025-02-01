@@ -45,9 +45,23 @@ public class InsertPositionDialog extends ActionDialog {
 
     @Override
     protected void okAction() {
+        if (positionNameField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(getParent(), "Position name must be not empty!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        int cost;
+        try {
+            cost = Math.abs(Integer.parseInt(positionCostField.getText()));
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(getParent(), "Position cost must be integer!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (positionCostField.getText().isEmpty()) {
+            positionCostField.setText("0");
+        }
         Position position = new Position(
                 positionNameField.getText(),
-                Integer.parseInt(positionCostField.getText())
+                cost
         );
         positionService.insert(position);
 
