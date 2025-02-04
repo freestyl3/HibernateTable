@@ -15,6 +15,10 @@ public class InsertPositionDialog extends ActionDialog {
     private JTextField positionNameField;
     private JTextField positionCostField;
 
+    /**
+     * Создание диалога создания должности
+     * @param tableModel
+     */
     public InsertPositionDialog(DefaultTableModel tableModel) {
         super(400, 180, "Insert Position");
         this.tableModel = tableModel;
@@ -23,6 +27,9 @@ public class InsertPositionDialog extends ActionDialog {
         setVisible(true);
     }
 
+    /**
+     * Функция для инициализации интерфейса
+     */
     protected void initializeUI() {
         JLabel positionNameLabel = new JLabel("Position name:");
         JLabel positionCostLabel = new JLabel("Position cost:");
@@ -43,6 +50,9 @@ public class InsertPositionDialog extends ActionDialog {
         add(inputPanel, BorderLayout.CENTER);
     }
 
+    /**
+     * Действие для кнопки подтверждения (создание должности)
+     */
     @Override
     protected void okAction() {
         if (positionNameField.getText().isEmpty()) {

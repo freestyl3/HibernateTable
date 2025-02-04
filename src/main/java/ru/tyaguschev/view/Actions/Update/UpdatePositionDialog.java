@@ -18,6 +18,10 @@ public class UpdatePositionDialog extends ActionDialog {
 
     private final Object[] rowData;
 
+    /**
+     * Создание диалога создания должности
+     * @param tableModel
+     */
     public UpdatePositionDialog(DefaultTableModel tableModel, Object[] rowData) {
         super(400, 200, "Update Position");
         this.tableModel = tableModel;
@@ -27,6 +31,9 @@ public class UpdatePositionDialog extends ActionDialog {
         setVisible(true);
     }
 
+    /**
+     * Функция для инициализации интерфейса
+     */
     protected void initializeUI() {
         // Создание компонентов
         JLabel idLabel = new JLabel("Position ID:");
@@ -58,6 +65,9 @@ public class UpdatePositionDialog extends ActionDialog {
         add(inputPanel, BorderLayout.CENTER);
     }
 
+    /**
+     * Действие для кнопки подтверждения (редактирование должности)
+     */
     @Override
     protected void okAction() {
         if (positionNameField.getText().isEmpty()) {

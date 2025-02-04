@@ -28,6 +28,10 @@ public class UpdateEmployeeDialog extends ActionDialog {
 
     private final Object[] rowData;
 
+    /**
+     * Создание диалога создания сотрудника
+     * @param tableModel
+     */
     public UpdateEmployeeDialog(DefaultTableModel tableModel, Object[] rowData) {
         super(400, 300, "Update Employee");
         this.tableModel = tableModel;
@@ -37,6 +41,9 @@ public class UpdateEmployeeDialog extends ActionDialog {
         setVisible(true);
     }
 
+    /**
+     * Функция для инициализации интерфейса
+     */
     protected void initializeUI() {
         // Создание компонентов
         JLabel idLabel = new JLabel("Employee ID:");
@@ -83,6 +90,9 @@ public class UpdateEmployeeDialog extends ActionDialog {
         add(inputPanel, BorderLayout.CENTER);
     }
 
+    /**
+     * Действие для кнопки подтверждения (редактирование сотрудника)
+     */
     @Override
     protected void okAction() {
         Employee employee = employeeService.findById(Integer.parseInt(idField.getText()));

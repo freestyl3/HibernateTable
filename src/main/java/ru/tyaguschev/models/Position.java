@@ -20,6 +20,11 @@ public class Position implements Model {
 
     public Position() {}
 
+    /**
+     * Конструктор для объекта "Должность"
+     * @param position_name
+     * @param cost
+     */
     public Position(
             String position_name,
             int cost

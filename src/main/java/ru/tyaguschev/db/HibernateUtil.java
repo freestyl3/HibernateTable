@@ -15,6 +15,10 @@ public class HibernateUtil {
 
     private HibernateUtil() {};
 
+    /**
+     * Функция для возвращения фабрики запросов
+     * @return
+     */
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
@@ -31,6 +35,11 @@ public class HibernateUtil {
         return sessionFactory;
     }
 
+    /**
+     * Функция для возвращения названий всех таблиц
+     * (не используется)
+     * @return
+     */
     public static List<String> fetchTableNames() {
         try (Session session = sessionFactory.openSession()) {
             return session.createNativeQuery("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'").getResultList();

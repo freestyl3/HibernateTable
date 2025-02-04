@@ -24,6 +24,10 @@ public class InsertEmployeeDialog extends ActionDialog {
     private JComboBox<String> positionIdCombo;
     private DatePicker datePicker;
 
+    /**
+     * Создание диалога создания сотрудника
+     * @param tableModel
+     */
     public InsertEmployeeDialog(DefaultTableModel tableModel) {
         super(400, 250, "Insert Employee");
         this.tableModel = tableModel;
@@ -38,6 +42,9 @@ public class InsertEmployeeDialog extends ActionDialog {
         setVisible(true);
     }
 
+    /**
+     * Функция для инициализации интерфейса
+     */
     protected void initializeUI() {
         JLabel firstnameLabel = new JLabel("Firstname:");
         JLabel lastnameLabel = new JLabel("Lastname:");
@@ -69,6 +76,9 @@ public class InsertEmployeeDialog extends ActionDialog {
         add(inputPanel, BorderLayout.CENTER);
     }
 
+    /**
+     * Действие для кнопки подтверждения (создание сотрудника)
+     */
     @Override
     protected void okAction() {
         if (firstnameField.getText().isEmpty()) {

@@ -11,6 +11,11 @@ import java.util.List;
 
 public class EmployeeDAO implements DataAccesObject {
 
+    /**
+     * Функция для поиска сотрудника по id
+     * @param id
+     * @return
+     */
     public Employee findById(int id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Employee employee = session.get(Employee.class, id);
@@ -18,6 +23,10 @@ public class EmployeeDAO implements DataAccesObject {
         return employee;
     }
 
+    /**
+     * Функция для создания сотрудника
+     * @param employee
+     */
     @Override
     public void insert(Model employee) {
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -27,6 +36,10 @@ public class EmployeeDAO implements DataAccesObject {
         session.close();
     }
 
+    /**
+     * Функция для редактирования сотрудника
+     * @param employee
+     */
     @Override
     public void update(Model employee) {
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -36,6 +49,10 @@ public class EmployeeDAO implements DataAccesObject {
         session.close();
     }
 
+    /**
+     * Функция для удаления сотрудника
+     * @param employee
+     */
     @Override
     public void delete(Model employee) {
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -45,6 +62,10 @@ public class EmployeeDAO implements DataAccesObject {
         session.close();
     }
 
+    /**
+     * Функция для поиска всех сотрудников
+     * @return
+     */
     @Override
     public List<Employee> findAll() {
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -53,6 +74,10 @@ public class EmployeeDAO implements DataAccesObject {
         return result;
     }
 
+    /**
+     * Дополнительная функция для поиска сотрудников (не используется)
+     * @return
+     */
     public List<List> findAll2() {
         Session session = HibernateUtil.getSessionFactory().openSession();
         var result = session.createQuery("select e.id, e.firstname, e.lastname, e.birthday, p.position_name " +
@@ -61,6 +86,11 @@ public class EmployeeDAO implements DataAccesObject {
         return result;
     }
 
+    /**
+     * Дополнительная функция для возвращения названий колонок
+     * (не используется)
+     * @return
+     */
     @Override
     public List<String> getColumns() {
         Session session = HibernateUtil.getSessionFactory().openSession();

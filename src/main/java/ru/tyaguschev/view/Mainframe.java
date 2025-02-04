@@ -12,8 +12,11 @@ public class Mainframe extends JFrame {
     private DatabaseService currentService = new EmployeeService();
     private final JTable table = new JTable(currentService.getTableModel());
 
+    /**
+     * Класс главного окна
+     */
     public Mainframe() {
-        getMenu();
+        createMenu();
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(800, 600));
@@ -21,7 +24,10 @@ public class Mainframe extends JFrame {
         add(scrollPane, BorderLayout.CENTER);
     }
 
-    private void getMenu() {
+    /**
+     * Функция для создания контекстного меню и действий кнопок
+     */
+    private void createMenu() {
         JMenuBar menuBar = new JMenuBar();
 
         JMenu tableMenu = new JMenu("Tables");
@@ -43,12 +49,10 @@ public class Mainframe extends JFrame {
 
         employeesTable.addActionListener(_ -> {
                 currentService = new EmployeeService();
-                currentService.updateTable();
                 table.setModel(currentService.getTableModel());
         });
         positionsTable.addActionListener(_ -> {
                 currentService = new PositionService();
-                currentService.updateTable();
                 table.setModel(currentService.getTableModel());
         });
 

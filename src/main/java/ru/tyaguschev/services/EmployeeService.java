@@ -49,6 +49,9 @@ public class EmployeeService implements DatabaseService{
         updateTable();
     }
 
+    /**
+     * Функция для динамического обновления таблицы
+     */
     @Override
     public void updateTable() {
         tableModel.setRowCount(0);
@@ -69,6 +72,11 @@ public class EmployeeService implements DatabaseService{
         }
     }
 
+    /**
+     * Функция получения значений в строке таблицы
+     * @param employee
+     * @return
+     */
     private Object[] getRowData(Employee employee) {
         return (new Object[]{
                 employee.getId(),
@@ -79,11 +87,18 @@ public class EmployeeService implements DatabaseService{
         });
     }
 
+    /**
+     * Функция для открытия диалога создания
+     */
     @Override
     public void openInsertDialog() {
         new InsertEmployeeDialog(tableModel);
     }
 
+    /**
+     * Функция для открытия диалога редактирования
+     * @param rowData
+     */
     @Override
     public void openUpdateDialog(Object[] rowData) {
         new UpdateEmployeeDialog(tableModel, rowData);

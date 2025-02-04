@@ -25,6 +25,12 @@ public class Employee implements Model {
 
     public Employee(){}
 
+    /**
+     * Конструктор для объекта "Сотрудник"
+     * @param firstname
+     * @param lastname
+     * @param birthday
+     */
     public Employee(
             String firstname,
             String lastname,

@@ -5,6 +5,9 @@ import ru.tyaguschev.models.Model;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
+/**
+ * Интерфейс сервиса работы с базой данных
+ */
 public interface DatabaseService {
     Model findById(int id);
     void insert(Model model);
